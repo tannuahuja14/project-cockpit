@@ -1,0 +1,76 @@
+{% extends "layout.html" %}
+{% block content %} 
+<style>
+    .btn-custom-light-blue {
+        background-color: #033340; /* Define your custom color code */
+        color: white; /* Text color */
+    }
+    body {
+        color: white;
+        background-image: url('/static/k8s.jpg');
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        animation: backgroundAnimation 10s linear infinite;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .form-group {
+        margin-bottom: 20px;
+    }
+    
+    .form-control {
+        width: 350px;
+        height: 30px;
+    }
+    .switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 30px;
+    }
+    
+    .switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+    }
+    
+    
+    </style>
+    
+    
+    <div class="container">
+    <h2>Delete EKS Cluster</h2>
+    <form id="eksForm" action="/delete_eks" method="post" onsubmit="return checkforvaldation()">
+    
+        <div class="form-group">
+            <label for="eks_name" style="color: aliceblue;">EKS Name:</label>
+            <input type="text" class="form-control" id="eks_name" name="eks_name" required>
+        </div>
+    
+        <div class="form-group">
+            <label for="Region" style="color: aliceblue;">Region:</label>
+            <select class="form-control" id="Region" name="Region" required>
+                <option value="us-east-1">us-east-1</option>
+                <option value="us-east-2">us-east-2</option>
+                <option value="us-west-1">us-west-1</option>
+                <option value="us-west-2">us-west-2</option>
+             
+            </select>
+        </div>
+         
+        <div class="form-group">
+            <label for="ng_name" style="color: aliceblue;">Node Group Name:</label>
+            <input type="text" class="form-control" id="ng_name" name="ng_name" required>
+        </div>
+
+       
+    
+        <button type="submit" class="btn btn-custom-light-blue">Delete Cluster</button>
+    </form>
+    </div>
+{% endblock content %}
+

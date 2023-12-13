@@ -1,0 +1,181 @@
+{% extends "layout.html" %}
+{% block content %}
+<head>
+    <title>Create GCP</title>
+</head>
+<style>
+     .btn-custom-light-blue {
+        background-color: #0f4d5e; /* Define your custom color code */
+        color: white; /* Text color */
+    }
+    body {
+        color: white;
+        background-image: url('/static/k8s.jpg');
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        animation: backgroundAnimation 10s linear infinite;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+    .form-control {
+        width: 350px;
+        height: 30px;
+    }
+    .switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 30px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+  border-radius: 34px;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+  border-radius: 50%;
+}
+
+input:checked + .slider {
+  background-color: #2196F3;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+</style>
+
+<script>
+     // Function to hide the flash message after a delay
+     function hideFlashMessage() {
+        var flashMessage = document.querySelector('.alert');
+        if (flashMessage) {
+            setTimeout(function () {
+                flashMessage.style.display = 'none';
+            }, 5000); // 5000 milliseconds (5 seconds) delay
+        }
+    }
+
+    // Call the function when the page loads
+    window.addEventListener('load', hideFlashMessage);
+    // Function to show/hide fields based on "Cluster Type" selection
+    function toggleVmFields() {
+        var clusterType = document.getElementById("cluster_type").value;
+        var vmFields = document.getElementById("vmFields");
+
+        if (clusterType === "Private") {
+            vmFields.style.display = "block";
+        } else {
+            vmFields.style.display = "none";
+        }
+    }
+    function checkforvaldation() {
+        let cluster_type = document.getElementById("cluster_type").value
+        let vm_name = document.getElementById("vm_name").value
+        let vm_pass = document.getElementById("vm_pass").value
+        if(cluster_type=="Public")
+            return true
+        if(vm_name=="" || vm_pass == "")
+        {
+            alert("vm name or vm pass cannot be empty")
+            return false
+        } 
+        return true
+    }
+</script>
+
+<div class="container">
+    <h2>Create GKE Cluster</h2>
+    <form id="gkeForm" action="/create_gke" method="post" onsubmit="return checkforvaldation()">
+
+        <div class="form-group">
+            <label for="project" style="color: aliceblue;">Project:</label>
+            <input type="text" class="form-control" id="project" name="project" required>
+        </div>
+
+        <div class="form-group">
+            <label for="gke_name" style="color: aliceblue;">GKE Name:</label>
+            <input type="text" class="form-control" id="gke_name" name="gke_name" required>
+        </div>
+
+
+        <div class="form-group">
+            <label for="region" style="color: aliceblue;">Region:</label>
+            <select class="form-control" id="region" name="region" required>
+                <option value="us-central1">us-central1</option>
+                <option value="us-east1">us-east1</option>
+                <option value="us-west1">us-west1</option>
+                <option value="asia-east1">asia-east1</option>
+                <option value="asia-south1">asia-south1</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="gke_version" style="color: aliceblue;">GKE Version:</label>
+            <input type="text" class="form-control" id="gke_version" name="gke_version" required>
+        </div>
+
+        <div class="form-group">
+            <label for="node_count" style="color: aliceblue;">Node Count:</label>
+            <input type="number" class="form-control" id="node_count" name="node_count" required>
+        </div>
+
+        <div class="form-group">
+            <label for="cluster_type" style="color: aliceblue;">Cluster Type:</label>
+            <select class="form-control" id="cluster_type" name="cluster_type" required onchange="toggleVmFields()">
+                <option value="Public">Public</option>
+                <option value="Private">Private</option>
+            </select>
+        </div>
+        
+        <div class="form-group">
+            <label for="cost_analysis" style="color: aliceblue;">Need Cost Analysis & Optimization:</label>
+        </div>
+        <div class="form-group">
+            <label class="switch">
+                <input type="checkbox" id="cost_analysis" name="cost_analysis">
+                <span class="slider round"></span>
+            </label>
+        </div>
+
+        <button type="submit" class="btn btn-custom-light-blue">Create Cluster</button>
+    </form>
+</div>
+{% endblock content %}

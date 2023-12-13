@@ -1,0 +1,105 @@
+{% extends "layout.html" %}
+{% block content %}
+<head>
+   <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Kubernetes Infrastructure</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <style>
+         .heading-margin {
+        margin-bottom: 40px; /* Adjust the margin as needed */
+    }
+        .btn-custom-light-blue {
+        background-color: #0f4d5e; /* Define your custom color code */
+        color: white; /* Text color */
+    }
+       body {
+            color: white;
+            background-image: url('/static/k8s.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            animation: backgroundAnimation 10s linear infinite;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+ 
+     /* .container {
+            max-width: 500px;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(18, 6, 114, 0.2);
+            margin-left: 220px; /* Adjust the margin to shift the container to the left */
+            /* background-color: rgb(4, 4, 81);
+            border: 2px solid white;
+        } */ */
+
+ 
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 15px;
+        }
+ 
+        .form-group label {
+            margin-bottom: 5px;
+        }
+        .form-control {
+            width: 350px;
+            height: 30px;
+        }
+        button {
+            width: 20%;
+            padding: 10px;
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+           box-sizing: border-box;
+            margin-top: 20px;
+        }
+    </style>
+ 
+
+</head>
+<body>
+    <div class="container">
+        <h2 class="heading-margin">Provide Azure Credentials</h2>
+        <form id="azureform" action="/submit_form_azure" method="post" onsubmit="return validateForm()">
+            <div class="form-group">
+                <label for="User_name">User_name:</label>
+                <input type="text" class="form-control"  name="User_name" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="subscription_id">Subscription ID:</label>
+                <input type="text" class="form-control" id="subscription_id" name="subscription_id" required>
+            </div>
+    
+            <div class="form-group">
+                <label for="client_id">Client ID:</label>
+                <input type="text" class="form-control" id="client_id" name="client_id" required>
+            </div>
+    
+            <div class="form-group">
+                <label for="client_secret">Client Secret:</label>
+                <input type="password" class="form-control" id="client_secret" name="client_secret" required>
+            </div>
+    
+            <div class="form-group">
+                <label for="tenant_id">Tenant ID:</label>
+                <input type="text" class="form-control" id="tenant_id" name="tenant_id" required>
+            </div>
+    
+            <button type="submit" class="btn btn-custom-light-blue">Submit</button>
+        </form>
+    </div>
+    
+    {% endblock content %}

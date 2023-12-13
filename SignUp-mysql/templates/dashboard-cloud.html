@@ -1,0 +1,41 @@
+<html>
+<head>
+    <title>Dashboard Cloud</title>
+    <!-- <link rel="stylesheet" href="final-dashboard.css"> -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='final-dashboard.css') }}">
+
+</head>
+<body>
+    <form action="/" method="post" class="username-form">
+        <label for="username">Hello {{username}}!!</label>
+    </form>
+
+    <div class="container">
+        <div class="actions">
+            <h2>Actions</h2>
+            <button onclick="showContent('create_aks')">Create Cluster</button>
+            <button onclick="showContent('myCluster')">My Cluster</button>
+            <button onclick="showAWSCredentials()">Credential Details</button>
+            <button onclick="showContent('clusterCreationStatus')">Cluster Creation Status</button>
+            <button onclick="showContent('myCluster')">Cost Optimisation</button>
+        </div>
+
+        <h2 class="heading-margin">Choose your cloud : </h2> 
+        <div class="cloud-selection">
+            <!-- Button for AWS -->
+            <a href="show-details-aws" class="btn btn-custom-light-blue cloud-button">
+                <img src="https://logos-world.net/wp-content/uploads/2021/08/Amazon-Web-Services-AWS-Logo.png" alt="AWS Logo" width="130"> AWS
+            </a>
+            <!-- Button for Azure -->
+            <a href="show-details-azure" class="btn btn-custom-light-blue cloud-button">
+                <img src="https://logos-world.net/wp-content/uploads/2021/05/Azure-Logo-700x394.png" alt="Azure Logo" width="130"> Azure
+            </a>
+            <!-- Button for GCP -->
+            <a href="show-details-gcp" class="btn btn-custom-light-blue cloud-button">
+                <img src="https://logos-world.net/wp-content/uploads/2021/02/Google-Cloud-Emblem.png" alt="GCP Logo" width="130"> GCP
+            </a>
+        </div>
+    </div>
+</body>
+</html>
+ 

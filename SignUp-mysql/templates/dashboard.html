@@ -1,0 +1,46 @@
+{% extends "layout.html" %}
+{% block content %} 
+<head>
+    <title>Dashboard</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='main.css') }}">
+    <style>
+          .btn-custom-light-blue {
+        background-color: #0f4d5e; /* Define your custom color code */
+        color: white; /* Text color */
+        }
+        .dashboard-content {
+            margin-top: 50px;  /* Add your preferred margin or padding values */
+            text-align: left; 
+        }
+
+        .button-spacing {
+            margin-top: 20px;
+         } 
+
+        .create-button {
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+    <h1>Hello, {{ username }}!</h1>
+
+    <div class="dashboard-content">
+      <h4><p style="color: aliceblue;">Ready to get started?</p></h4>
+        <a href="/cloud">
+          <button type="submit" class="btn btn-custom-light-blue">Create Cluster</button>
+        </a>
+        <br>
+        <a href ="/cloud_del">
+          <button type="submit" class="btn btn-custom-light-blue button-spacing">Delete Cluster</button>
+        </a>
+        <br>
+        <a href ="/cloud">
+          <button type="submit" class="btn btn-custom-light-blue button-spacing">Cloud Credentials</button>
+        </a>
+
+        
+    </div>
+</body>
+
+{% endblock content %}

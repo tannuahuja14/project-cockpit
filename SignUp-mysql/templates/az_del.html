@@ -1,0 +1,64 @@
+{% extends "layout.html" %}
+{% block content %} 
+<style>
+    .btn-custom-light-blue {
+        background-color: #033340; /* Define your custom color code */
+        color: white; /* Text color */
+    }
+    body {
+        color: white;
+        background-image: url('/static/k8s.jpg');
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        animation: backgroundAnimation 10s linear infinite;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .form-group {
+        margin-bottom: 20px;
+    }
+    
+    .form-control {
+        width: 350px;
+        height: 30px;
+    }
+    .switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 30px;
+    }
+    
+    .switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+    }
+    
+    
+    </style>
+    
+    
+    <div class="container">
+    <h2>Delete AKS Cluster</h2>
+    <form id="aksForm" action="/delete_aks" method="post" onsubmit="return checkforvaldation()">
+    
+        <div class="form-group">
+            <label for="aks_name" style="color: aliceblue;">AKS Name:</label>
+            <input type="text" class="form-control" id="aks_name" name="aks_name" required>
+        </div>
+    
+        <div class="form-group">
+            <label for="resource_group" style="color: aliceblue;">Resource Group Name:</label>
+            <input type="text" class="form-control" id="resource_group" name="resource_group" required>
+        </div>
+           
+    
+        <button type="submit" class="btn btn-custom-light-blue">Delete Cluster</button>
+    </form>
+    </div>
+{% endblock content %}
+

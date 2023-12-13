@@ -1,0 +1,61 @@
+<html>
+<head>
+    <title>Dashboard Cloud</title>
+    <!-- <link rel="stylesheet" href="final-dashboard.css"> -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='final-dashboard.css') }}">
+
+</head>
+<body>
+    <form action="/" method="post" class="username-form">
+        <label for="username">Hello {{username}}!!</label>
+    </form>
+
+    <div class="container">
+        <div class="actions">
+            <h2>Actions</h2>
+            <button onclick="showContent('create_aks')">Create Cluster</button>
+            <button onclick="showContent('myCluster')">My Cluster</button>
+            <button onclick="showAWSCredentials()">Credential Details</button>
+            <button onclick="showContent('clusterCreationStatus')">Cluster Creation Status</button>
+            <button onclick="showContent('myCluster')">Cost Optimisation</button>\
+
+<!-- 
+            <button onclick="redirectToPage('dashboard-cloud')">Create Cluster</button>
+
+            <button onclick="redirectToPage('dashboard-cloud')">My Cluster</button>
+            <button onclick="redirectToPage('dashboard-cloud')">Credential Details</button>
+            <button onclick="redirectToPage('dashboard-cloud')">Cluster Creation Status</button>
+            <button onclick="redirectToPage('dashboard-cloud')">Cost Optimization</button> -->
+
+
+        </div>
+
+        <h2 class="heading-margin">Choose your cloud to create cluster: </h2> 
+        <div class="cloud-selection">
+
+<!-- Button for AWS -->
+<a href="/aws" class="btn btn-custom-light-blue cloud-button">
+    <img src="https://logos-world.net/wp-content/uploads/2021/08/Amazon-Web-Services-AWS-Logo.png" alt="AWS Logo" width="80"> AWS
+</a>
+
+<!-- Button for Azure -->
+<a href="/azure" class="btn btn-custom-light-blue cloud-button">
+    <img src="https://logos-world.net/wp-content/uploads/2021/05/Azure-Logo-700x394.png" alt="Azure Logo" width="80"> Azure
+</a>
+
+<!-- Button for GCP -->
+<a href="/gcp" class="btn btn-custom-light-blue cloud-button">
+    <img src="https://logos-world.net/wp-content/uploads/2021/02/Google-Cloud-Emblem.png" alt="GCP Logo" width="80"> GCP
+</a>
+
+        </div>
+    </div>
+<!-- 
+    
+    <div id="credentialDetailsContent">
+        <h1>Initial Content for Credential Details</h1>
+    </div> -->
+
+</body>
+</html>
+ 

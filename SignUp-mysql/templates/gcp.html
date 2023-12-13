@@ -1,0 +1,81 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Kubernetes Infrastructure</title>
+    <!-- Add Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <!-- Add Bootstrap JavaScript and jQuery (required for Bootstrap's JavaScript) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <style>
+         .heading-margin {
+        margin-bottom: 40px; /* Adjust the margin as needed */
+    }
+         .btn-custom-light-blue {
+        background-color: #0f4d5e; /* Define your custom color code */
+        color: white; /* Text color */
+    }
+     body {
+            color: white;
+            background-image: url('/static/k8s.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            animation: backgroundAnimation 10s linear infinite;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* .container {
+            max-width: 500px;
+            padding: 20px;
+            border-radius: 10px;
+            margin-left: 220px; /* Shift the container to the extreme left */
+            /* background-color: rgb(4, 4, 81); */
+            /* border: 2px solid white; */
+         */
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-control {
+            width: 350px; 
+            height: 30px; 
+        }
+        button {
+            width: 20%;
+            padding: 10px;
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+           box-sizing: border-box;
+            margin-top: 20px;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="container" >
+        <h2 class="heading-margin">Provide GCP Credentials in JSON file format</h2>
+        <form id="gkeForm" action="/submit_form_gke" method="post" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="User_name">User_name:</label>
+                <input type="text" class="form-control"  name="User_name" required>
+            </div>
+            <label for="jsonFile">Upload a JSON File: </label>
+            <input type="file" id="jsonFile" name="jsonFile" accept=".json" required><br><br>
+            <button type="submit" class="btn btn-custom-light-blue">Submit</button>
+        </form>
+</div> 
+{% endblock content %}

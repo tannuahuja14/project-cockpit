@@ -1,0 +1,60 @@
+<html>
+<head>
+    <title>Dashboard Cloud</title>
+    <!-- <link rel="stylesheet" href="final-dashboard.css"> -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='final-dashboard.css') }}">
+
+</head>
+<body>
+    <form action="/" method="post" class="username-form">
+        <label for="username">Hello {{username}}!!</label>
+    </form>
+
+    <div class="container">
+        <div class="actions">
+            <h2>Actions</h2>
+            <button onclick="showContent('create_aks')">Create Cluster</button>
+            <button onclick="showContent('myCluster')">My Cluster</button>
+            <button onclick="showAWSCredentials()">Credential Details</button>
+            <button onclick="showContent('clusterCreationStatus')">Cluster Creation Status</button>
+            <button onclick="showContent('myCluster')">Cost Optimisation</button>
+        </div>
+<!-- 
+       <div class="cluster-details">
+        <h1>Cluster Creation Status</h1>
+        <h3>The cluster is created successfully</h3>
+        <button>Showing Job ID : {{ job_id }}</button>
+       
+
+
+        {% if job_logs %}
+        <h2>Job Logs:</h2>
+        <pre>{{ job_logs }}</pre>
+    {% endif %}
+
+
+       </div> -->
+       <div class="cluster-details">
+        <h1>Cluster Creation Status</h1>
+        <h3>The cluster is created successfully</h3>
+        <button id="showLogsButton">Show Job Logs</button>
+        <div id="jobLogsContainer" style="display: none;">
+            <h2>Job ID:</h2>
+            <p>{{ job_id }}</p>
+            {% if job_logs %}
+                <h2>Job Logs:</h2>
+                <pre id="jobLogs">{{ job_logs }}</pre>
+            {% endif %}
+        </div>
+    </div>
+    
+    <script>
+        // JavaScript code to show/hide job logs container
+        document.getElementById('showLogsButton').addEventListener('click', function() {
+            var jobLogsContainer = document.getElementById('jobLogsContainer');
+            jobLogsContainer.style.display = (jobLogsContainer.style.display === 'none' || jobLogsContainer.style.display === '') ? 'block' : 'none';
+        });
+    </script>
+    
+</html>
+ 

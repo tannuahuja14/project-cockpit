@@ -1,0 +1,224 @@
+body {
+    background-color: #001f3f; /* Dark blue background color */
+    color: #fff; /* Text color */
+    font-family: Arial, sans-serif;
+    margin: 0;
+}
+
+.container {
+    display: flex;
+    height: 100vh; /* Full height of the viewport */
+}
+
+.username-form {
+    position: fixed;
+    top: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #03213f; /* Match the color with the navbar */
+    padding: 40px;
+    font-size: larger;
+    font-weight: 800;
+    width: 100%; /* Take full width */
+}
+
+.username-form label {
+    color: #fff;
+    text-align: left;
+    display: block;
+    padding-left: 70px;
+    width: 100%; /* Make the label take up the full width of the container */
+}
+
+.navbar,
+.actions {
+    width: 600px; /* Fixed width for the navbar and actions block */
+}
+
+.actions {
+    background-color: #003366; /* Darker blue for the actions block */
+    padding: 60px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 90px;
+}
+
+button {
+    display: block;
+    width: 100%;
+    padding: 40px;
+    margin-bottom: 40px;
+    background-color: #004080; /* Button color */
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    font-size: larger;
+}
+
+button:hover {
+    background-color: #0050a0; /* Button color on hover */
+}
+
+
+
+#content-container {
+    width: 60%;
+    padding: 20px;
+    height: 100%;
+    background-color: #000; /* Set the background color to black */
+    color: #fff; /* Set the text color to white */
+}
+
+#myClusterContent,
+/* #credentialDetailsContent, */
+#clusterCreationStatusContent {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    
+    
+}
+
+.content {
+    display: none; /* Hide content initially */
+    background-color: #e5eae4;
+    margin-top: 21vh;
+    padding-left: 20%;
+    height: 200px;
+
+    position: fixed;
+    
+    
+
+}
+
+.content h2 {
+    color: #070101;
+
+}
+
+#clusterCreationStatusContent {
+    display: block; /* Show the content block for Cluster Creation Status */
+    background-color: #f8f2f2; /* Set the background color to black */
+    color: #fff; /* Set the text color to white */
+    padding: 20px;
+}
+
+#clusterCreationStatusContent table {
+    /* Add styles for the table if needed */
+    color: #070000; /* Set the text color to white */
+    
+}
+
+#clusterCreationStatusContent table th, #clusterCreationStatusContent table td {
+    /* Add styles for table header and table data cells if needed */
+    border: 1px solid #fff; /* Add border for better visibility */
+    padding: 8px;
+}
+
+
+#myClusterContent,
+/* #credentialDetailsContent, */
+#clusterCreationStatusContent
+ {
+    width: 100%;
+    height: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #030c50; /* Set the background color to black */
+    color: #fff; /* Set the text color to white */
+    overflow-y: auto; /* Add scroll for content block if needed */
+}
+
+#credentialDetailsContent {
+margin-top:50px;
+background-color: red;
+display: none;
+}
+
+#myClusterContent,
+/* #credentialDetailsContent, */
+#clusterCreationStatusContent h2 {
+    color: #eae6e6; /* Set the heading color to white */
+}
+
+#myClusterContent table {
+    width: 40%;
+    color: #fff; /* Set the text color to white */
+    padding-right: 100px;
+    position: fixed;
+    right: 60px;
+}
+
+#myClusterContent table th, #myClusterContent table td {
+    border: 1px solid #fff; /* Set border color to white */
+    padding: 8px; /* Adjust padding as needed */
+
+}
+
+#myClusterContent table thead {
+    background-color: #333; /* Set header background color to dark gray */
+}
+
+/* cloud selection page */
+.heading-margin{
+    margin-top: 13%;
+    margin-left: 5%;
+}
+
+.cloud-selection {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.cloud-selection a{
+    margin-left: 30px;
+}
+.cloud-selection img{
+    align-items: center;
+}
+.cloud-button {
+    text-align: center;
+    margin: 0 30px; /* Adjust the margin between each cloud button */
+    color: wheat;
+    text-decoration: none;
+}
+
+
+
+.cloud-button {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    text-decoration: none;
+    color: #fff; /* Text color for the button */
+}
+
+.cloud-button img {
+    width: 130px;
+    margin-right: 10px;
+}
+
+.heading-margin {
+    
+    margin-top: 13%;
+    margin-left: 5%;
+}
+
+.btn {
+    padding: 10px;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background-color: #0050a0;
+}
+.azure-credentials h1{
+    margin-top: 30px;
+}
+.cluster-details{
+   
+    margin-top: 13%;
+    margin-left: 5%;   
+}

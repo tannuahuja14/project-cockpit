@@ -1,0 +1,31 @@
+<html>
+<head>
+    <title>Show credentials</title>
+    <!-- <link rel="stylesheet" href="final-dashboard.css"> -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='final-dashboard.css') }}">
+ 
+</head>
+<body>
+    <form action="/" method="post" class="username-form">
+        <label for="username">{{ username }}</label>
+    </form>
+ 
+    <div class="container">
+        <div class="actions">
+            <h2>Actions</h2>
+            <button onclick="showContent('myCluster')">Create Cluster</button>
+            <button onclick="showContent('myCluster')">My Cluster</button>
+            <button onclick="showAWSCredentials()">Credential Details</button>
+ 
+            <button onclick="showContent('clusterCreationStatus')">Cluster Creation Status</button>
+            <button onclick="showContent('myCluster')">Cost Optimisation</button>
+        </div>
+        <div class="aws-credentials">
+            <h1>Credential</h1>
+            <p>Access Key: {{ access_key }}</p>
+            <p>Secret Access Key: {{ secret_access_key }}</p>
+            
+        </div>
+ 
+</body>
+</html>

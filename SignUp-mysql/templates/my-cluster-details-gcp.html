@@ -1,0 +1,37 @@
+<html>
+<head>
+    <title>Dashboard Cloud</title>
+    <!-- <link rel="stylesheet" href="final-dashboard.css"> -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='final-dashboard.css') }}">
+
+</head>
+<body>
+    <form action="/" method="post" class="username-form">
+        <label for="username">Hello {{username}}!!</label>
+    </form>
+
+    <div class="container">
+        <div class="actions">
+            <h2>Actions</h2>
+            <button onclick="showContent('create_aks')">Create Cluster</button>
+            <button onclick="showContent('myCluster')">My Cluster</button>
+            <button onclick="showAWSCredentials()">Credential Details</button>
+            <button onclick="showContent('clusterCreationStatus')">Cluster Creation Status</button>
+            <button onclick="showContent('myCluster')">Cost Optimisation</button>\
+
+
+
+        </div>
+
+       <div class="details">
+        <h1>List of GKE Clusters</h1>
+    <ul>
+        {% for cluster in clusters %}
+            <li>{{ clusters_data }}</li>
+        {% endfor %}
+    </ul>
+        
+       </div>
+     
+</body>
+</html>

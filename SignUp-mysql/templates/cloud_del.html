@@ -1,0 +1,53 @@
+{% extends "layout.html" %}
+{% block content %} 
+<style>
+    .btn-custom-light-blue {
+        background-color: #033340; /* Define your custom color code */
+        color: white; /* Text color */
+    }
+    /* Add margin between buttons */
+    .cloud-button {
+        margin-right: 80px; /* Adjust the margin as needed */
+    }
+
+    
+
+    /* Add margin between heading and buttons */
+    .heading-margin {
+        margin-bottom: 40px; /* Adjust the margin as needed */
+    }
+</style>
+
+<script>
+    // Function to hide the flash message after a delay
+    function hideFlashMessage() {
+        var flashMessage = document.querySelector('.alert');
+        if (flashMessage) {
+            setTimeout(function () {
+                flashMessage.style.display = 'none';
+            }, 5000); // 5000 milliseconds (5 seconds) delay
+        }
+    }
+
+    // Call the function when the page loads
+    window.addEventListener('load', hideFlashMessage);
+</script>
+
+<h2 class="heading-margin">Select a cloud in which you want to deploy your K8s cluster</h2> 
+
+<!-- Button for AWS -->
+<a href="/aws_del" class="btn btn-custom-light-blue cloud-button">
+    <img src="https://logos-world.net/wp-content/uploads/2021/08/Amazon-Web-Services-AWS-Logo.png" alt="AWS Logo" width="80"> AWS
+</a>
+
+<!-- Button for Azure -->
+<a href="/az_del" class="btn btn-custom-light-blue cloud-button">
+    <img src="https://logos-world.net/wp-content/uploads/2021/05/Azure-Logo-700x394.png" alt="Azure Logo" width="80"> Azure
+</a>
+
+<!-- Button for GCP -->
+<a href="/gcp_del" class="btn btn-custom-light-blue cloud-button">
+    <img src="https://logos-world.net/wp-content/uploads/2021/02/Google-Cloud-Emblem.png" alt="GCP Logo" width="80"> GCP
+</a>
+{% endblock content %}
+

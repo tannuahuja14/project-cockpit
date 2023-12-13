@@ -1,0 +1,117 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<head>
+
+    <title>File Submit Success</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+ 
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+
+ 
+
+ 
+
+<style>
+
+body {
+
+    color: white;
+
+    background-image: url('/static/k8s.jpg');
+
+    background-size: cover;
+
+    background-repeat: no-repeat;
+
+    background-attachment: fixed;
+
+    animation: backgroundAnimation 10s linear infinite;
+
+    height: 100vh;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+}
+
+ 
+
+.message-container {
+
+    padding: 20px;
+
+    border-radius: 10px;
+
+    margin-top: 20px;
+
+}
+
+ 
+
+.message-text {
+
+    color: #fff; /* Text color */
+
+    text-align: left; /* Align the text to the left */
+
+}
+
+ 
+
+.check-icon {
+
+    color: green; /* Color for the check icon */
+
+    font-size: 36px; /* Adjust the icon size as needed */
+
+}
+
+ 
+
+</style>
+
+ 
+
+</head>
+
+ 
+
+<body>
+
+<div class="container">
+
+<div class="row justify-content-center">
+
+    <div class="col-md-6">
+
+        <div class="message-container" style="display: flex; width: 1000px; margin-top: 10%; margin-left: -100%;">
+
+            <h1 class="message-text" >Credentials Submitted Successfully!</h1>
+
+            <i class="fas fa-check-circle check-icon" style="margin-left: 40px;margin-top: 50px;"></i>
+
+        </div>
+
+    </div>
+
+</div>
+
+</div>
+
+ 
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+ 
+
+{% endblock content %}

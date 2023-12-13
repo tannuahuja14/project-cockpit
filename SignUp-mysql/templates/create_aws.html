@@ -1,0 +1,201 @@
+{% extends "layout.html" %}
+{% block content %}
+<head>
+    <title>Create EKS</title>
+</head>
+<style>
+     .btn-custom-light-blue {
+        background-color: #0f4d5e; /* Define your custom color code */
+        color: white; /* Text color */
+    }
+    body {
+        color: white;
+        background-image: url('/static/k8s.jpg');
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        animation: backgroundAnimation 10s linear infinite;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+    .form-control {
+        width: 350px;
+        height: 30px;
+    }
+    .switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 30px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+  border-radius: 34px;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+  border-radius: 50%;
+}
+
+input:checked + .slider {
+  background-color: #2196F3;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+</style>
+
+<script>
+     // Function to hide the flash message after a delay
+     function hideFlashMessage() {
+        var flashMessage = document.querySelector('.alert');
+        if (flashMessage) {
+            setTimeout(function () {
+                flashMessage.style.display = 'none';
+            }, 5000); // 5000 milliseconds (5 seconds) delay
+        }
+    }
+
+    // Call the function when the page loads
+    window.addEventListener('load', hideFlashMessage);
+    // Function to show/hide fields based on "Cluster Type" selection
+    function toggleVmFields() {
+        var clusterType = document.getElementById("cluster_type").value;
+        var vmFields = document.getElementById("vmFields");
+
+        if (clusterType === "Private") {
+            vmFields.style.display = "block";
+        } else {
+            vmFields.style.display = "none";
+        }
+    }
+    function checkforvaldation() {
+        let cluster_type = document.getElementById("cluster_type").value
+        let vm_name = document.getElementById("vm_name").value
+        let vm_pass = document.getElementById("vm_pass").value
+        if(cluster_type=="Public")
+            return true
+        if(vm_name=="" || vm_pass == "")
+        {
+            alert("vm name or vm pass cannot be empty")
+            return false
+        } 
+        return true
+    }
+</script>
+
+<div class="container">
+    <h2>Create EKS Cluster</h2>
+    <form id="awsForm" action="/create_aws" method="post" onsubmit="return checkforvaldation()">
+        <div class="form-group">
+            <label for="eks_name" style="color: aliceblue;">EKS Name:</label>
+            <input type="text" class="form-control" id="cluster_name" name="eks_name" required>
+        </div>
+
+        <div class="form-group">
+            <label for="Region" style="color: aliceblue;">Region:</label>
+            <select class="form-control" id="Region" name="Region" required>
+                <option value="US East (N. Virginia)">US East (N. Virginia)</option>
+                <option value="Asia Pacific (Mumbai)">Asia Pacific (Mumbai)</option>
+                <option value="US East (Ohio)">US East (Ohio)</option>
+                <option value="US West (N. California)">US West (N. California)</option>
+                <option value="Middle East (Bahrain)">Middle East (Bahrain)</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="instance_type" style="color: aliceblue;">Instance type:</label>
+            <select class="form-control" id="instance_type" name="instance_type" required>
+                <option value="t2.micro">t2.micro</option>
+                <option value="t3.medium">t3.medium</option>
+                <option value="m5.large">m5.large</option>
+                <option value="r5.large">r5.large</option>
+                <option value="i3.large">i3.large</option>
+            </select>        
+        </div>
+
+        <div class="form-group">
+            <label for="eks_version" style="color: aliceblue;">EKS Version:</label>
+            <select class="form-control" id="eks_version" name="eks_version" required>
+                <option value="1.23">1.23</option>
+                <option value="1.24">1.24</option>
+                <option value="1.25">1.25</option>
+                <option value="1.26">1.26</option>
+                <option value="1.27">1.27</option>
+            </select>       
+        </div>
+
+        <div class="form-group">
+            <label for="desired_size" style="color: aliceblue;">Desired size:</label>
+            <input type="number" class="form-control" id="desired_size" name="desired_size" required>
+        </div>
+
+        <div class="form-group">
+            <label for="max_size" style="color: aliceblue;">Max size:</label>
+            <input type="number" class="form-control" id="max_size" name="max_size" required>
+        </div>
+
+        <div class="form-group">
+            <label for="min_size" style="color: aliceblue;">Min size:</label>
+            <input type="number" class="form-control" id="min_size" name="min_size" required>
+        </div>
+
+        <div class="form-group">
+            <label for="cluster_type" style="color: aliceblue;">Cluster Type:</label>
+            <select class="form-control" id="cluster_type" name="cluster_type" required onchange="toggleVmFields()">
+                <option value="Public">Public</option>
+                <option value="Private">Private</option>
+            </select>
+        </div>
+        
+        <div class="form-group">
+            <label for="cost_analysis" style="color: aliceblue;">Need Cost Analysis & Optimization:</label>
+        </div>
+        <div class="form-group">
+            <label class="switch">
+                <input type="checkbox" id="cost_analysis" name="cost_analysis">
+                <span class="slider round"></span>
+            </label>
+        </div>
+
+        <button type="submit" class="btn btn-custom-light-blue">Create Cluster</button>
+    </form>
+</div>
+{% endblock content %}

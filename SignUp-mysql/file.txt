@@ -1,0 +1,3 @@
+eks-name = "cockpit-pro1-eks"
+region = "us-east-1"
+node = "cockpit-pro1-eks-eks-nodegroup"

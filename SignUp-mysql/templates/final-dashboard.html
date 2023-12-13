@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <link rel="stylesheet" href="final-dashboard.css"> -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='final-dashboard.css') }}">
+    <!-- <script src="{{ url_for('static', filename='script.js') }}"></script> -->
+    
+    <title>Dashboard Final</title>
+</head>
+<body>
+    <form action="/" method="post" class="username-form">
+        <label for="username">Hello, {{ username }}!</label>
+        <!-- <h1>Hello, {{ username }}!</h1> -->
+
+    </form>
+
+    <div class="container">
+        <div class="actions">
+            <h2>Actions</h2>
+            <!-- <button onclick="showContent('myCluster')">Create Cluster</button>
+
+            <button onclick="showContent('myCluster')">My Cluster</button>
+            <button onclick="showContent('credentialDetails')">Credential Details</button>
+
+            <button onclick="showContent('clusterCreationStatus')">Cluster Creation Status</button>
+            <button onclick="showContent('myCluster')">Cost Optimisation</button> -->
+
+            <button onclick="redirectToPage('create-cluster')">Create Cluster</button>
+
+            <button onclick="redirectToPage('my-cluster')">My Cluster</button>
+            <button onclick="redirectToPage('dashboard-cloud')">Credential Details</button>
+            <button onclick="redirectToPage('cluster-creation-status')">Cluster Creation Status</button>
+            <button onclick="redirectToPage('dashboard-cloud')">Cost Optimization</button>
+
+        </div>
+
+        <script>
+            function redirectToPage(page) {
+                window.location.href = page;
+            }
+            </script>
+
+        
+        <div id="contentContainer" class="content-container">
+            <div id="myClusterContent" class="content">
+                <!-- <h3>Cluster Details</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Cluster</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Cluster 1</td>
+                            <td>Status 1</td>
+                        </tr>
+                        <tr>
+                            <td>Cluster 2</td>
+                            <td>Status 2</td>
+                        </tr>
+                        <tr>
+                            <td>Cluster 3</td>
+                            <td>Status 3</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div> -->
+
+            <div id="credentialDetailsContent" class="content">
+                <h3>Credential Details</h3>
+                
+                  <button>Modify Cluster</button>
+                  <button>Delete Cluster</button>                
+            </div>
+
+            <div id="clusterCreationStatusContent" class="content">
+                <h2>Cluster Creation Status</h2>
+                <h5>the cluster is created</h5>
+                <h5>the cluster is not created</h5>
+
+            </div>
+        </div>
+    </div>
+    <script>
+        // Function to show content
+        function showContent(contentId) {
+            // Hide all content blocks
+            var allContents = document.querySelectorAll('.content');
+            allContents.forEach(function(content) {
+                content.style.display = 'none';
+            });
+
+            // Show the selected content block
+            var selectedContent = document.getElementById(contentId + 'Content');
+            if (selectedContent) {
+                selectedContent.style.display = 'block';
+            }
+        }
+    </script>
+</body>
+</html>

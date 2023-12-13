@@ -1,0 +1,30 @@
+version: '3'
+services:
+  app:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    ports:
+      - "5000:5000"
+    environment:
+      - MYSQL_HOST=db
+      - MYSQL_USER=manjari
+      - MYSQL_PASSWORD=manjari
+      - MYSQL_DB=creds
+    depends_on:
+      - db
+    networks:
+      - mynetwork
+
+  db:
+    image: mysql:latest
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: manjari
+      MYSQL_DATABASE: creds
+    networks:
+      - mynetwork
+
+networks:
+  mynetwork:

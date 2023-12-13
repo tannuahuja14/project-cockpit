@@ -1,0 +1,113 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Credentials</title>
+    <!-- Add Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <!-- Add Bootstrap JavaScript and jQuery (required for Bootstrap's JavaScript) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <style>
+         .heading-margin {
+        margin-bottom: 40px; /* Adjust the margin as needed */
+    }
+         .btn-custom-light-blue {
+        background-color: #0f4d5e; /* Define your custom color code */
+        color: white; /* Text color */
+    }
+        body {
+            color: white;
+            background-image: url('/static/k8s.jpg');
+            background-size: 100% 100%;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            animation: backgroundAnimation 10s linear infinite;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* .container {
+            max-width: 500px;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(18, 6, 114, 0.2);
+            margin-left: 220px; /* Adjust the margin to shift the container to the left */
+            /* background-color: rgb(4, 4, 81);
+            border: 2px solid white;
+        } */ */
+
+        .form-group {
+            margin-bottom: 10px;
+            /* size: 10px; */
+        }
+
+        .form-control {
+            width: 350px; 
+            height: 30px; 
+        }
+
+    </style>
+
+<script>
+    function validateForm() {
+        var accessKeyInput = document.getElementById('Access_key');
+        var accessKey = accessKeyInput.value;
+        var secretKeyInput = document.getElementById('secret_Access_key');
+        var secretKey = secretKeyInput.value;
+
+        // Regular expression to check if the Access Key ID starts with 'AKIA' and followed by 16 uppercase letters and numbers
+        var accessKeyRegex = /^AKIA[A-Z0-9]{16}$/;
+
+        // Regular expression to check if the Secret Access Key is a 40-character base64 string
+        var secretKeyRegex = /^[A-Za-z0-9+/=]{40}$/;
+
+        // Test the Access Key ID against the regular expression
+        if (!accessKeyRegex.test(accessKey)) {
+            alert('Access Key ID should start with \'AKIA\' and followed by 16 uppercase letters and numbers.');
+            accessKeyInput.focus();
+            return false;
+        }
+
+        // Test the Secret Access Key against the regular expression
+        if (!secretKeyRegex.test(secretKey)) {
+            alert('Secret Access Key should be a 40-character base64 string.');
+            secretKeyInput.focus();
+            return false;
+        }
+
+        return true;
+    }
+</script>
+</head>
+<body>
+    <div class="container">
+        <h2 class="heading-margin">Provide AWS Credentials</h2>
+        <form id="k8sForm" action="/submit_form" method="post" onsubmit="return validateForm()">
+            <div class="form-group">
+                <label for="User_name">User_name:</label>
+                <input type="text" class="form-control"  name="User_name" required>
+            </div>
+            <div class="form-group">
+                <label for="Access_key">Access Key:</label>
+                <input type="text" class="form-control" id="Access_key" name="Access_key" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="secret_Access_key">Secret Access Key:</label>
+                <input type="password" class="form-control" id="secret_Access_key" name="secret_Access_key" required>
+            </div>
+        
+            <button type="submit" class="btn btn-custom-light-blue">Submit</button>
+        </form>
+    </div>
+
+
+{% endblock content %}
